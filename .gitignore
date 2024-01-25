@@ -1,0 +1,41 @@
+# Byte-compiled / optimized / DLL files
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Pipenv
+Pipfile
+Pipfile.lock
+
+# Distribution / packaging
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Python virtual environments
+env/
+venv/
+.venv/
+
+# Operating System specific files
+.DS_Store
+
+# IDE/Editor specific files
+.idea/
+.vscode/
+
+# Python linters and type checkers
+.pylintrc
+.pylint.d/
+.mypy_cache/
