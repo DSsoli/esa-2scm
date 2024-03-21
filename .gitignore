@@ -39,3 +39,6 @@ venv/
 .pylintrc
 .pylint.d/
 .mypy_cache/
+
+# Local test
+test/
