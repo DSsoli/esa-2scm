@@ -118,13 +118,13 @@ class ESA2SCM(BaseCM):
     def z1(self):
         if hasattr(self, "_z1"):
             return self._z1
-        raise AttributeError("Prior knowledge has been set")
+        raise AttributeError("Synthetic IV (z1) is not generated as Prior Knowledge has been set")
     
     @property
     def z2(self):
         if hasattr(self, "_z2"):
             return self._z2
-        raise AttributeError("Prior knowledge has been set")
+        raise AttributeError("Synthetic IV (z2) is not generated as Prior Knowledge has been set")
     
     @property
     def causal_coef(self):
@@ -152,13 +152,13 @@ class ESA2SCM(BaseCM):
     def corr_x1_to_slsiv(self):
         if hasattr(self, "_x1_slsiv_corr_"):
             return self._x1_slsiv_corr_
-        raise AttributeError("Prior knowledge has been set")
+        raise AttributeError("Synthetic IV to calculate correlation coefficient is not generated as Prior knowledge has been set")
     
     @property
     def corr_x2_to_slsiv(self):
         if hasattr(self, "_x2_slsiv_corr_"):
             return self._x2_slsiv_corr_
-        raise AttributeError("Prior knowledge has been set")
+        raise AttributeError("Synthetic IV to calculate correlation coefficient is not generated as Prior knowledge has been set")
     
     @property
     def summary(self):

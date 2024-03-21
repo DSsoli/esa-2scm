@@ -26,7 +26,6 @@ class SynIV:
         if M < 2: raise ValueError("Minimum number of segments (M) must be a positive integer greater than or equal to 2")
 
         def check_concentration(M):
-            segment_sizes = [n // M + (1 if i < n % M else 0) for i in range(M)]
             unique_elements, counts = np.unique(x, return_counts=True)
             max_concentration_threshold = 1 / M
             max_concentration = np.max(counts) / n
@@ -41,7 +40,7 @@ class SynIV:
         
         if M < 2:
             warnings.warn(f"""
-                            Data is too concentrated on a single segment to perform meaningful ESA. Using Dense Rank method instead.
+                            Data is excessively concentrated on a single segment to perform meaningful ESA. Using Dense Rank method instead.
                             (Single value accounts for {max_concent*100:.2f}% of the total dataset while single segment threshold for M={original_M} is fixed at {fixed_thres*100:.2f}%).
                             (This may indicate bias in the dataset, and may happen more commonly if the provided data is discrete and imbalanced). 
                             """, UserWarning)
@@ -49,7 +48,7 @@ class SynIV:
         
         if M != original_M:
             warnings.warn(f"""
-                            Data is too concentrated on a single segment to perform meaningful ESA. Using M={M} instead of M={original_M}.
+                            Data is excessively concentrated on a single segment to perform meaningful ESA. Using M={M} instead of M={original_M}.
                             (Single value accounts for {max_concent*100:.2f}% of the total dataset while single segment threshold for M={original_M} is fixed at {fixed_thres*100:.2f}%).
                             (This may indicate bias in the dataset, and may happen more commonly if the provided data is discrete and imbalanced). 
                             """, UserWarning)
