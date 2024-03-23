@@ -1,3 +1,3 @@
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 
-from .models import ESA2SCM
+from .models import Esa2Scm

@@ -112,10 +112,10 @@ pip install esa-2scm
 ```python
 import numpy as np
 import pandas as pd
-from esa_2scm import ESA2SCM
+from esa_2scm import Esa2Scm
 
 # For causal discovery and determination of the true causal direction, input x_1 and x_2 as follows to initialize the ESA-2SCM model:
-model = ESA2SCM(x1, x2)
+model = Esa2Scm(x1, x2)
 
 # Fit the model, using Synthetic IV generation method(syniv_method, default: 'ESA') to estimate causality
 # Adjust the parameter M(default=2) to manually manage the degree of correlation between the Synthetic IVs (2SLS-converted) and the respective endogenous variables

@@ -40,5 +40,6 @@ venv/
 .pylint.d/
 .mypy_cache/
 
-# Local test
-test/
+# tests
+.pytest_cache/
+test.ipynb

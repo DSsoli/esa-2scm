@@ -32,7 +32,7 @@ class BaseCM:
         else: raise ValueError("Valid expression for prior_knowledge: 'x2->x1' or 'x1->x2'")
 
 
-class ESA2SCM(BaseCM):
+class Esa2Scm(BaseCM):
     
     def __init__(self, x1, x2, prior_knowledge=None):
         super().__init__(x1, x2, prior_knowledge)
@@ -54,7 +54,7 @@ class ESA2SCM(BaseCM):
         if self._prior_knowledge is not None:
             
             def estimate(x1, x2, prior_knowledge):
-                x_hat, b = ESA2SCM._estimate(x1, x2)
+                x_hat, b = Esa2Scm._estimate(x1, x2)
                 causal_dir = prior_knowledge
                 score = r2_score(x1, x_hat)
                 return x_hat, b, causal_dir, score
@@ -69,12 +69,12 @@ class ESA2SCM(BaseCM):
             estimate_syniv = SynIV.get_syniv(syniv_method)
             self._z1, self._z2 = estimate_syniv(self._x1, **kwargs), estimate_syniv(self._x2, **kwargs)
             
-            self._x1_iv1sls, self._x2_iv1sls = ESA2SCM._estimate(self._x1, self._z1)[0], ESA2SCM._estimate(self._x2, self._z2)[0]
+            self._x1_iv1sls, self._x2_iv1sls = Esa2Scm._estimate(self._x1, self._z1)[0], Esa2Scm._estimate(self._x2, self._z2)[0]
             self._x1_slsiv_corr_ = 'undefined (0 variance)' if np.var(self._x1_iv1sls) == 0 or np.var(self._x1) == 0 else np.corrcoef(self._x1_iv1sls, self._x1)[0][1] 
             self._x2_slsiv_corr_ = 'undefined (0 variance)' if np.var(self._x2_iv1sls) == 0 or np.var(self._x2) == 0 else np.corrcoef(self._x2_iv1sls, self._x2)[0][1]
             
-            self._x1_iv2sls, self._b12 = ESA2SCM._estimate(self._x1, self._x2_iv1sls)
-            self._x2_iv2sls, self._b21 = ESA2SCM._estimate(self._x2, self._x1_iv1sls)
+            self._x1_iv2sls, self._b12 = Esa2Scm._estimate(self._x1, self._x2_iv1sls)
+            self._x2_iv2sls, self._b21 = Esa2Scm._estimate(self._x2, self._x1_iv1sls)
             
             self._score, self._score_rev = round(r2_score(self._x1, self._x1_iv2sls), 5), round(r2_score(self._x2, self._x2_iv2sls), 5) 
             
