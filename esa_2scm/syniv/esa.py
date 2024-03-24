@@ -117,4 +117,8 @@ class SynIV:
             return syniv_map[method]
         except:
             raise ValueError(f"Invalid method name '{method}'")
-        
+
+
+def r2_score(y_true, y_pred):
+    r2 = 1 - np.sum((y_true - y_pred)**2) / np.sum((y_true - np.mean(y_true))**2)
+    return r2

@@ -97,8 +97,6 @@ Get $z_1$ and  $z_2$ via applying the process (1) to (7) for  $x_1$ and  $x_2$, 
 
 * scipy
 
-* scikit-learn
-
 ## Installation
 
 To install the ESA-2SCM package, use `pip` as follows:

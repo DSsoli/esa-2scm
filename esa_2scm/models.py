@@ -1,12 +1,8 @@
 import numpy as np
 import pandas as pd
 import scipy.stats as ss
-from sklearn.metrics import r2_score
 from typing import Union, List
-from .syniv import SynIV
-
-
-
+from .syniv import SynIV, r2_score
 
 class BaseCM:
     
@@ -29,7 +25,7 @@ class BaseCM:
                         
         if prior_knowledge in BaseCM._KNOWLEDGE:
             self._prior_knowledge = prior_knowledge
-        else: raise ValueError("Valid expression for prior_knowledge: 'x2->x1' or 'x1->x2'")
+        else: raise ValueError("Valid expression for prior_knowledge: 'x2->x1' or 'x1->x2'")    
 
 
 class Esa2Scm(BaseCM):
