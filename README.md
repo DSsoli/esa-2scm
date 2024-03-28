@@ -128,8 +128,8 @@ print(model.causal_coef)
 # To confirm the true goodness of fit of the ESA-2SCM for determination of the causal direction:
 print(model.esa2scm_score)
 
-# With causal direction determined via ESA-2SCM, to confirm the true goodness of fit of the Regression Model using original variables:
-print(model.inverse_transformed_score)
+# With causal direction determined via ESA-2SCM, to confirm the posthoc goodness of fit of the Regression Model using original variables:
+print(model.posthoc_score)
 
 # To check the degree of correlation between the generated Synthetic IVs and the endogenous variables (x1 and x2, respectively):
 print(model.corr_x1_to_slsiv)

@@ -1,3 +1,12 @@
+"""
+The esa-2scm package is an implementation of the ESA-2SCM algorithm (Sanghoon Lee, 2024)
+For Details, please refer to my original article: http://www.snbperi.org/article/227
+
+Should you use this package, I kindly request you to cite my article:
+Lee, Sanghoon (2024). ESA-2SCM for Causal Discovery: Causal Modeling with Elastic Segmentation-based Synthetic Instrumental Variable, SnB Political and Economic Research Institute, 1, 16. <snbperi.org/article/227>
+"""
+
+
 import numpy as np
 import pandas as pd
 import scipy.stats as ss
@@ -145,7 +154,7 @@ class Esa2Scm(BaseCM):
         raise AttributeError("esa2scm_score is not unavailable as Pior Knowledge has been set")
     
     @property
-    def inverse_transformed_score(self):
+    def posthoc_score(self):
         return self._determined_mod_ols_score
     
     @property

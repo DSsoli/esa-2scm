@@ -37,7 +37,7 @@ def test_model_simulation():
     assert round(model.causal_coef, 1) == 1.8
     assert model.causal_direction == "x2->x1"
     assert round(model.esa2scm_score, 2) == 0.21
-    assert round(model.inverse_transformed_score, 2) == 0.22
+    assert round(model.posthoc_score, 2) == 0.22
     assert type(model.x1) == np.ndarray
     assert type(model.x2) == np.ndarray
     assert hasattr(model, "x_hat") == True
@@ -60,7 +60,7 @@ def test_prior_knowledge():
     model.fit()
     assert model.causal_direction == "x1->x2 (prior knowledge)"
     assert round(model.causal_coef, 1) == 0.5
-    assert round(model.inverse_transformed_score, 2) == 0.96
+    assert round(model.posthoc_score, 2) == 0.96
     assert hasattr(model, "summary") == True
     assert hasattr(model, "z1") == False
     assert hasattr(model, "syniv2sls_score") == False
