@@ -56,10 +56,10 @@ class Esa2Scm(BaseCM):
                 return x_hat, b, causal_dir, score
                         
             if self._prior_knowledge == 'x2->x1':
-                self._x_hat, self._b, self._causal_dir_fixed, self._true_score = estimate(self._x1, self._x2, self._prior_knowledge)
+                self._x_hat, self._b, self._causal_dir_fixed, self._determined_mod_ols_score = estimate(self._x1, self._x2, self._prior_knowledge)
                 
             else:
-                self._x_hat, self._b, self._causal_dir_fixed, self._true_score = estimate(self._x2, self._x1, self._prior_knowledge)
+                self._x_hat, self._b, self._causal_dir_fixed, self._determined_mod_ols_score = estimate(self._x2, self._x1, self._prior_knowledge)
 
         else:
             estimate_syniv = SynIV.get_syniv(syniv_method)
@@ -78,10 +78,14 @@ class Esa2Scm(BaseCM):
             
             if self._causal_dir == "x2->x1":
                 self._true_x_hat, self._true_causal_coef, self._true_score = self._x2_iv2sls, self._b12, self._score
+                self._determined_mod_ols_score = round(r2_score(self._x1, Esa2Scm._estimate(self._x1, self._x2)[0]), 5) 
+                
             elif self._causal_dir == "x1->x2":
                 self._true_x_hat, self._true_causal_coef, self._true_score = self._x1_iv2sls, self._b21, self._score_rev
+                self._determined_mod_ols_score = round(r2_score(self._x2, Esa2Scm._estimate(self._x2, self._x1)[0]), 5) 
+                
             else:
-                self._true_x_hat, self._true_causal_coef, self._true_score = np.nan, 0, 0
+                self._true_x_hat, self._true_causal_coef, self._true_score, self._determined_mod_ols_score = np.nan, 0, 0, 0
             
         return self
     
@@ -91,7 +95,7 @@ class Esa2Scm(BaseCM):
         additional_idx = ["Corr (2SLS_IV-Explanatory)"]
         
         if self._prior_knowledge is not None:
-            self._result = pd.DataFrame({self._prior_knowledge + " (Predetermined)": [self._prior_knowledge, self._true_score, self._b]}, index=summary_idx)
+            self._result = pd.DataFrame({self._prior_knowledge + " (Predetermined)": [self._prior_knowledge, self._determined_mod_ols_score, self._b]}, index=summary_idx)
             return self._result
         
         summary_columns = ['x2->x1', 'x1->x2']
@@ -135,8 +139,14 @@ class Esa2Scm(BaseCM):
         return self._causal_dir
     
     @property
-    def score(self):
-        return self._true_score
+    def esa2scm_score(self):
+        if hasattr(self, "_true_score"):
+            return self._true_score
+        raise AttributeError("esa2scm_score is not unavailable as Pior Knowledge has been set")
+    
+    @property
+    def inverse_transformed_score(self):
+        return self._determined_mod_ols_score
     
     @property
     def x_hat(self):

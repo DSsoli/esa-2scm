@@ -122,9 +122,14 @@ model.fit(syniv_method="esa", M=2)
 # To confirm the estimated causal direction:
 print(model.causal_direction)
 
-# To confirm the goodness of fit and causal coefficient for the detected causal direction:
-print(model.score)
+# To confirm the causal impact coefficient for the detected causal direction:
 print(model.causal_coef)
+
+# To confirm the true goodness of fit of the ESA-2SCM for determination of the causal direction:
+print(model.esa2scm_score)
+
+# With causal direction determined via ESA-2SCM, to confirm the true goodness of fit of the Regression Model using original variables:
+print(model.inverse_transformed_score)
 
 # To check the degree of correlation between the generated Synthetic IVs and the endogenous variables (x1 and x2, respectively):
 print(model.corr_x1_to_slsiv)
