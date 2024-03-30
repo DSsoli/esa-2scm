@@ -9,9 +9,9 @@ Lee, Sanghoon (2024). ESA-2SCM for Causal Discovery: Causal Modeling with Elasti
 
 import numpy as np
 import pandas as pd
-import scipy.stats as ss
 from typing import Union, List
 from .syniv import SynIV, r2_score
+
 
 class BaseCM:
     
@@ -30,11 +30,18 @@ class BaseCM:
         if len(x1) != len(x2):
             raise ValueError("Need equal sample sizes for x1 and x2")
         
-        self._x1, self._x2 = np.array(x1) , np.array(x2)
-                        
+        try: check_x1, check_x2 = np.array(x1, dtype=float), np.array(x2, dtype=float)
+        except ValueError as e:
+            raise ValueError("Inputs contain non-numerical values") from None
+        
+        if np.isnan(check_x1).any() or np.isnan(check_x2).any():
+            raise ValueError("Inputs contain NaN values")
+        
         if prior_knowledge in BaseCM._KNOWLEDGE:
             self._prior_knowledge = prior_knowledge
-        else: raise ValueError("Valid expression for prior_knowledge: 'x2->x1' or 'x1->x2'")    
+        else: raise ValueError("Valid expression for prior_knowledge: 'x2->x1' or 'x1->x2'")
+        
+        self._x1, self._x2 = np.array(x1) , np.array(x2)
 
 
 class Esa2Scm(BaseCM):

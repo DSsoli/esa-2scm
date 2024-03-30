@@ -7,6 +7,6 @@ Lee, Sanghoon (2024). ESA-2SCM for Causal Discovery: Causal Modeling with Elasti
 """
 
 
-__version__ = "0.1.7"
+__version__ = "0.1.8"
 
 from .models import Esa2Scm
