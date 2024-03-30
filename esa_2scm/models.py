@@ -107,16 +107,16 @@ class Esa2Scm(BaseCM):
     
     
     def _summary(self):
-        summary_idx = ["Causal Direction", "Goodness of Fit", "Causal Coefficient"]
+        summary_idx = ["Causal Direction", "Causal Coefficient", "Goodness of Fit"]
         additional_idx = ["Corr (2SLS_IV-Explanatory)"]
         
         if self._prior_knowledge is not None:
-            self._result = pd.DataFrame({self._prior_knowledge + " (Predetermined)": [self._prior_knowledge, self._determined_mod_ols_score, self._b]}, index=summary_idx)
+            self._result = pd.DataFrame({self._prior_knowledge + " (Predetermined)": [self._prior_knowledge, self._b, self._determined_mod_ols_score]}, index=summary_idx)
             return self._result
         
         summary_columns = ['x2->x1', 'x1->x2']
-        summary_values = [str(self._causal_dir == 'x2->x1'), self._score, self._b12, self._x2_slsiv_corr_]
-        summary_values_rev = [str(self._causal_dir == 'x1->x2'), self._score_rev, self._b21, self._x1_slsiv_corr_]
+        summary_values = [str(self._causal_dir == 'x2->x1'), self._b12, self._score, self._x2_slsiv_corr_]
+        summary_values_rev = [str(self._causal_dir == 'x1->x2'), self._b21, self._score_rev, self._x1_slsiv_corr_]
         self._result = pd.DataFrame({summary_columns[0]: summary_values, summary_columns[1]: summary_values_rev}, index=summary_idx+additional_idx)
         
         return self._result
