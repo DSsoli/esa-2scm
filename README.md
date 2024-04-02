@@ -7,7 +7,7 @@ ESA-2SCM is a new method for detecting causality based on Elastic Segment Alloca
 <br>
 For details of the model design, please refer to my Original Article:
 
-* [Lee, Sanghoon (2024). **ESA-2SCM for Causal Discovery: Causal Modeling with Elastic Segmentation-based Synthetic Instrumental Variable**, *SnB Political and Economic Research Institute,* *1,* 16. <snbperi.org/article/227>](http://www.snbperi.org/article/227)
+* [Lee, Sanghoon (2024). **ESA-2SCM for Causal Discovery: Causal Modeling with Elastic Segmentation-based Synthetic Instrumental Variable**, *SnB Political and Economic Research Institute,* *1,* 21. <snbperi.org/article/230>](http://www.snbperi.org/article/230)
 
 ## Model Overview
 Suppose that you are interested in discovering the causal relationship between $x_1$ and $x_2$ (e.g., determining the *true causal direction*: $x_1$ -> $x_2$ vs. $x_2$ -> $x_1$, measuring the magnitude of *causal impact*):
@@ -31,7 +31,7 @@ thus,
 </p>
 
 
-The estimators are also inconsistent, as:
+The estimators are also asymptotically inconsistent, as:
 <p align="center">
   <img src="https://github.com/DSsoli/esa-2scm/blob/main/img/5.png?raw=true" width="310"/>
 </p>
@@ -55,7 +55,7 @@ The estimators are also inconsistent, as:
 
 4. Segment size allocation:
 <p align="center">
-  <img src="https://github.com/DSsoli/esa-2scm/blob/main/img/9.png?raw=true" width="400"/>
+  <img src="https://github.com/DSsoli/esa-2scm/blob/main/img/9.png?raw=true" width="500"/>
 </p>
 
 5. Elastic adjustment algorithm for adjusting the number of segments:
@@ -63,7 +63,7 @@ The estimators are also inconsistent, as:
   <img src="https://github.com/DSsoli/esa-2scm/blob/main/img/10.png?raw=true" width="580"/>
 </p>
 
-6. Grouping:
+6. Grouping based on the adjusted sizes and number of segments:
 <p align="center">
   <img src="https://github.com/DSsoli/esa-2scm/blob/main/img/11.png?raw=true" width="450"/>
 </p>
@@ -141,7 +141,7 @@ model.summary()
 
 ## Documentation
 Original Article of the ESA-2SCM:
-* Lee, Sanghoon (2024). **ESA-2SCM for Causal Discovery: Causal Modeling with Elastic Segmentation-based Synthetic Instrumental Variable**, *SnB Political and Economic Research Institute,* *1,* 16. <snbperi.org/article/227> [[ARTICLE LINK]](http://www.snbperi.org/article/227)
+* Lee, Sanghoon (2024). **ESA-2SCM for Causal Discovery: Causal Modeling with Elastic Segmentation-based Synthetic Instrumental Variable**, *SnB Political and Economic Research Institute,* *1,* 21. <snbperi.org/article/230> [[ARTICLE LINK]](http://www.snbperi.org/article/230)
 
 ## Examples
 Examples of running ESA-2SCM in Jupyter Notebook are included in [esa_2scm/examples](https://github.com/DSsoli/esa-2scm/tree/main/examples)
@@ -154,4 +154,4 @@ My package is licensed under the terms of the [MIT license](https://github.com/D
 ### ESA-2SCM Package
 
 Should you use my package to perform ESA-2SCM for causal discovery, please kindly cite my Original Article:
-* Lee, Sanghoon (2024). **ESA-2SCM for Causal Discovery: Causal Modeling with Elastic Segmentation-based Synthetic Instrumental Variable**, *SnB Political and Economic Research Institute,* *1,* 16. <snbperi.org/article/227> [[ARTICLE LINK]](http://www.snbperi.org/article/227)
+* Lee, Sanghoon (2024). **ESA-2SCM for Causal Discovery: Causal Modeling with Elastic Segmentation-based Synthetic Instrumental Variable**, *SnB Political and Economic Research Institute,* *1,* 21. <snbperi.org/article/230> [[ARTICLE LINK]](http://www.snbperi.org/article/230)
