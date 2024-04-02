@@ -55,7 +55,7 @@ The estimators are also asymptotically inconsistent, as:
 
 4. Segment size allocation:
 <p align="center">
-  <img src="https://github.com/DSsoli/esa-2scm/blob/main/img/9.png?raw=true" width="500"/>
+  <img src="https://github.com/DSsoli/esa-2scm/blob/main/img/9.png?raw=true" width="400"/>
 </p>
 
 5. Elastic adjustment algorithm for adjusting the number of segments:
