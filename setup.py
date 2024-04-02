@@ -16,7 +16,7 @@ setup(
     author="Sanghoon Lee (DSsoli)",
     author_email="solisoli3197@gmail.com",
     name="esa-2scm",
-    version="0.2.1",
+    version="0.2.2",
     description="ESA-2SCM Python Package for Causal Discovery",
     long_description=README,
     long_description_content_type="text/markdown",
