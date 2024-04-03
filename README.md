@@ -74,16 +74,14 @@ The estimators are also asymptotically inconsistent, as:
 </p>
 
 8. Apply 2SLS using the generated Synthetic IV vectors *(Z)*: <br>
-Model Specification:
 
-<p align="center">
-  <img src="https://github.com/DSsoli/esa-2scm/blob/main/img/13.png?raw=true" width="200"/>
-</p>
-
-Get $z_1$ and  $z_2$ via applying the process (1) to (7) for  $x_1$ and  $x_2$, then perform 2SLS to estimate for:
+    * Get $z_1$ and  $z_2$ via applying the process (1) to (7) for  $x_1$ and  $x_2$, then perform 2SLS to estimate for:
+ 
 <p align="center">
   <img src="https://github.com/DSsoli/esa-2scm/blob/main/img/14.png?raw=true" width="200"/>
-</p>
+</p>  
+
+Compare fits to determine the true causal direction, and estimate the true causal coefficient from the correctly identified model.
 
 
 
