@@ -1,6 +1,7 @@
 # ESA-2SCM: Elastic Segment Allocation-based 2SLS Structural Causal Model for Causal Discovery
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/DSsoli/esa-2scm/blob/main/LICENSE)
+[![PyPI - Version](https://img.shields.io/pypi/v/esa-2scm)](https://pypi.org/project/esa-2scm/)
 
 ESA-2SCM is a new method for detecting causality based on Elastic Segment Allocation-based synthetic instrumental variables with 2SLS application for estimating structural causal models. 
 <br>
