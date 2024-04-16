@@ -1,6 +1,6 @@
 # ESA-2SCM: Elastic Segment Allocation-based 2SLS Structural Causal Model for Causal Discovery
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/DSsoli/esa-2scm/blob/main/LICENSE)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/DSsoli/esa-2scm/blob/main/LICENSE)
 [![PyPI - Version](https://img.shields.io/pypi/v/esa-2scm)](https://pypi.org/project/esa-2scm/)
 
 ESA-2SCM is a new method for detecting causality based on Elastic Segment Allocation-based synthetic instrumental variables with 2SLS application for estimating structural causal models. 
@@ -146,11 +146,24 @@ Original Article of the ESA-2SCM:
 Examples of running ESA-2SCM in Jupyter Notebook are included in [esa_2scm/examples](https://github.com/DSsoli/esa-2scm/tree/main/examples)
 
 ## License
-My package is licensed under the terms of the [MIT license](https://github.com/DSsoli/esa-2scm/blob/main/LICENSE)
+```xml
+Copyright 2024 Sanghoon Lee (DSsoli). All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
+
+[Apache License 2.0](https://github.com/DSsoli/esa-2scm/blob/main/LICENSE)
 
 ## References
-
-### ESA-2SCM Package
-
-Should you use my package to perform ESA-2SCM for causal discovery, please kindly cite my Original Article:
+Should you use this package, please cite my original article as follows:
 * Lee, Sanghoon (2024). **ESA-2SCM for Causal Discovery: Causal Modeling with Elastic Segmentation-based Synthetic Instrumental Variable**, *SnB Political and Economic Research Institute,* *1,* 21. <snbperi.org/article/230> [[ARTICLE LINK]](http://www.snbperi.org/article/230)
