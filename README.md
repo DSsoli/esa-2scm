@@ -61,11 +61,11 @@ The estimators are also asymptotically inconsistent, as:
 
 5. Elastic adjustment algorithm for adjusting the number of segments:
 <p align="center">
-  <img src="https://github.com/DSsoli/esa-2scm/blob/main/img/10_1.png?raw=true" width="580"/>
+  <img src="https://github.com/DSsoli/esa-2scm/blob/main/img/10_1.png?raw=true" width="480"/>
 </p>
 
 <p align="center">
-  <img src="https://github.com/DSsoli/esa-2scm/blob/main/img/10_2.png?raw=true" width="580"/>
+  <img src="https://github.com/DSsoli/esa-2scm/blob/main/img/10_2.png?raw=true" width="480"/>
 </p>
 
 <p align="center">
@@ -124,7 +124,8 @@ model = Esa2Scm(x1, x2)
 
 # Fit the model, using Synthetic IV generation method(syniv_method, default: 'ESA') to estimate causality
 # Adjust the parameter M(default=2) to manually manage the degree of correlation between the Synthetic IVs (2SLS-converted) and the respective endogenous variables
-model.fit(syniv_method="esa", M=2)
+# Adjust the regularization term tau (default=0) to control the strictness of the elastic adjustment algorithm for balanced segment size optimization
+model.fit(syniv_method="esa", M=2, data_type='continuous', tau=0.01)
 
 # To confirm the estimated causal direction:
 print(model.causal_direction)
