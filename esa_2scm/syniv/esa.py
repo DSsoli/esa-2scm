@@ -40,41 +40,66 @@ class SynIV:
         
         return z
     
+    @staticmethod
+    def minmax_scale(x):
+        x_scaled = []
+        for datum in x:
+            datum_scaled = (datum - min(x)) / (max(x) - min(x))
+            x_scaled.append(datum_scaled)
+        return np.array(x_scaled)
     
     @staticmethod
-    def esa(x, M=2):
+    def check_concentration(x, M, data_type, tau):
+        if data_type not in ['discrete', 'continuous']:
+            raise ValueError("data type should be either 'discrete' or 'continuous'")
+        n = len(x)
+        if data_type == 'discrete':
+            unique_elements, counts = np.unique(x, return_counts=True)
+            max_concentration_threshold = 1 / M
+            max_concentration = np.max(counts) / n
+            return counts, max_concentration, max_concentration_threshold, max_concentration <= (max_concentration_threshold + tau)
+        elif data_type == 'continuous':
+            x_scaled = SynIV.minmax_scale(x)
+            T = 1 / M
+            C_v_list = []
+            for i in range(M):
+                C_v = len([x for x in x_scaled if x >= i * T and x < (i+1) * T])
+                if i == M-1:
+                    C_v = len([x for x in x_scaled if x >= i * T and x <= 1])
+                C_v_list.append(C_v)
+            max_concentration = np.max(C_v_list) / n
+            return C_v_list, max_concentration, T, max_concentration <= (T + tau)
+        
+    @staticmethod
+    def esa(x, M=2, data_type='continuous', tau=0):
         n = len(x)
         idx_sorted = np.argsort(x)
         original_M = M
                 
         if M < 2: raise ValueError("Minimum number of segments (M) must be a positive integer greater than or equal to 2")
 
-        def check_concentration(M):
-            unique_elements, counts = np.unique(x, return_counts=True)
-            max_concentration_threshold = 1 / M
-            max_concentration = np.max(counts) / n
-            return max_concentration, max_concentration_threshold, max_concentration <= max_concentration_threshold
-        
         fixed_thres = 1/M
         while M >= 2:
-            max_concent, max_concent_threshold, threshold_check = check_concentration(M)
+            if n % M != 0:
+                M -= 1
+            _, max_concent, max_concent_threshold, threshold_check = SynIV.check_concentration(x=x, M=M, data_type=data_type, tau=tau)
             if threshold_check:
                 break
             M -= 1
         
         if M < 2:
             warnings.warn(f"""
-                            Data is excessively concentrated on a single segment to perform meaningful ESA. Using Dense Rank method instead.
-                            (Single value accounts for {max_concent*100:.2f}% of the total dataset while single segment threshold for M={original_M} is fixed at {fixed_thres*100:.2f}%).
-                            (This may indicate bias in the dataset, and may happen more commonly if the provided data is discrete and imbalanced). 
+                            Data is excessively concentrated on a single segment to perform meaningful ESA. Using Dense Rank method instead. This may indicate bias in the dataset.
+                            Consider either checking data imbalance or increasing the regularization term tau.
+                            (Single segment under post-optimization accounts for {max_concent*100:.2f}% of the total dataset while single segment threshold for M={original_M} is fixed at {fixed_thres*100:.2f}%).
                             """, UserWarning)
             return SynIV.dense_rank(x)
         
         if M != original_M:
             warnings.warn(f"""
                             Data is excessively concentrated on a single segment to perform meaningful ESA. Using M={M} instead of M={original_M}.
-                            (Single value accounts for {max_concent*100:.2f}% of the total dataset while single segment threshold for M={original_M} is fixed at {fixed_thres*100:.2f}%).
-                            (This may indicate bias in the dataset, and may happen more commonly if the provided data is discrete and imbalanced). 
+                            Consider either checking data imbalance or increasing the regularization term tau.
+                            (Single segment under post-optimization accounts for {max_concent*100:.2f}% of the total dataset while single segment threshold for M={original_M} is fixed at {fixed_thres*100:.2f}%).
                             """, UserWarning)
 
         segment_sizes = [n // M + (1 if i < n % M else 0) for i in range(M)]

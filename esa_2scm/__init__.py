@@ -22,6 +22,6 @@ Should you use this package, please cite my article as follows:
 """
 
 
-__version__ = "0.2.6"
+__version__ = "0.2.7"
 
 from .models import Esa2Scm

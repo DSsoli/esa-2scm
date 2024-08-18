@@ -61,7 +61,15 @@ The estimators are also asymptotically inconsistent, as:
 
 5. Elastic adjustment algorithm for adjusting the number of segments:
 <p align="center">
-  <img src="https://github.com/DSsoli/esa-2scm/blob/main/img/10.png?raw=true" width="580"/>
+  <img src="https://github.com/DSsoli/esa-2scm/blob/main/img/10_1.png?raw=true" width="580"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/DSsoli/esa-2scm/blob/main/img/10_2.png?raw=true" width="580"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/DSsoli/esa-2scm/blob/main/img/10_3.png?raw=true" width="580"/>
 </p>
 
 6. Grouping based on the adjusted sizes and number of segments:
