@@ -8,7 +8,7 @@ ESA-2SCM is a new method for detecting causality based on Elastic Segment Alloca
 <br>
 For details of the model design, please refer to my Original Article:
 
-* [Lee, Sanghoon (2024). **ESA-2SCM for Causal Discovery: Causal Modeling with Elastic Segmentation-based Synthetic Instrumental Variable**, *SnB Political and Economic Research Institute,* *1,* 21. <snbperi.org/article/233>](http://www.snbperi.org/article/233)
+* [Lee, Sanghoon (2024). **ESA-2SCM for Causal Discovery: Causal Modeling with Elastic Segmentation-based Synthetic Instrumental Variable**, *SnB Political and Economic Research Institute,* *1,* 21. <snbperi.org/article/234>](http://www.snbperi.org/article/234)
 
 ## Model Overview
 Suppose that you are interested in discovering the causal relationship between $x_1$ and $x_2$ (e.g., determining the *true causal direction*: $x_1$ -> $x_2$ vs. $x_2$ -> $x_1$, measuring the magnitude of *causal impact*):
@@ -149,7 +149,7 @@ model.summary()
 
 ## Documentation
 Original Article of the ESA-2SCM:
-* Lee, Sanghoon (2024). **ESA-2SCM for Causal Discovery: Causal Modeling with Elastic Segmentation-based Synthetic Instrumental Variable**, *SnB Political and Economic Research Institute,* *1,* 21. <snbperi.org/article/233> [[ARTICLE LINK]](http://www.snbperi.org/article/233)
+* Lee, Sanghoon (2024). **ESA-2SCM for Causal Discovery: Causal Modeling with Elastic Segmentation-based Synthetic Instrumental Variable**, *SnB Political and Economic Research Institute,* *1,* 21. <snbperi.org/article/234> [[ARTICLE LINK]](http://www.snbperi.org/article/234)
 
 ## Examples
 Examples of running ESA-2SCM in Jupyter Notebook are included in [esa_2scm/examples](https://github.com/DSsoli/esa-2scm/tree/main/examples)
@@ -175,4 +175,4 @@ limitations under the License.
 
 ## References
 Should you use this package, please cite my original article as follows:
-* Lee, Sanghoon (2024). **ESA-2SCM for Causal Discovery: Causal Modeling with Elastic Segmentation-based Synthetic Instrumental Variable**, *SnB Political and Economic Research Institute,* *1,* 21. <snbperi.org/article/233> [[ARTICLE LINK]](http://www.snbperi.org/article/233)
+* Lee, Sanghoon (2024). **ESA-2SCM for Causal Discovery: Causal Modeling with Elastic Segmentation-based Synthetic Instrumental Variable**, *SnB Political and Economic Research Institute,* *1,* 21. <snbperi.org/article/234> [[ARTICLE LINK]](http://www.snbperi.org/article/234)
